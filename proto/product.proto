@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package product;
+
+option go_package = "/proto;proto";
+
+service ProductService {
+    rpc AddProduct (ProductRequest) returns (ProductResponse);
+    rpc GetProduct (ProductID) returns (ProductResponse);
+    rpc UpdateProduct (ProductRequest) returns (ProductResponse);
+    rpc DeleteProduct (ProductID) returns (DeleteResponse);
+}
+
+message Product {
+    int32 id = 1;
+    string name = 2;
+    float price = 3;
+}
+
+message ProductRequest {
+    Product product = 1;
+}
+
+message ProductResponse {
+    Product product = 1;
+}
+
+message ProductID {
+    int32 id = 1;
+}
+
+message DeleteResponse {
+    string message = 1;
+}
